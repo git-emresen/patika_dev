@@ -1,6 +1,8 @@
 const fs=require('fs')
 const cmd=process.argv[2]
 
+
+
 function create(command){
     fs.writeFile("employees.json",'{"name":"Employee1 Name","salary":2000}',"utf-8",(err)=>{
         if(err){console.log(err)}
