@@ -1,0 +1,48 @@
+Proje 1
+
+[22,27,16,2,18,6] -> Insertion Sort
+
+Yukarı verilen dizinin sort türüne göre aşamalarını yazınız.
+
+Big-O gösterimini yazınız.
+
+Time Complexity: Dizi sıralandıktan sonra 18 sayısı aşağıdaki case'lerden hangisinin kapsamına girer? Yazınız
+
+    Average case: Aradığımız sayının ortada olması
+    Worst case: Aradığımız sayının sonda olması
+    Best case: Aradığımız sayının dizinin en başında olması.
+
+
+
+[7,3,5,8,2,9,4,15,6] dizisinin Selection Sort'a göre ilk 4 adımını yazınız.
+
+
+      Çözüm :
+      
+      İnsertion sort algoritmasında bir adet temp ve bir tane de j değişkenine ihtiyaç vardır.
+      temp değişkeni 1. indisten başlar, j değişkeni temp-1 indis değerini alır.
+      [22,27,16,2,18,6] -> Insertion Sort
+      burada temp değerimiz 1. indis olan 27 dir. j değeri ise 0. indis olan 22 değeri; j>temp sağlamadığından birinci işlemde bir değişlik olmadı.
+      22,27,16,2,18,6      
+      16,22,27,2,18,6  
+      2,16,22,27,18,6
+      2,16,18,22,27,6
+      2,6,16,18,22,27
+                        
+      
+      Bi-O gösterimi: O(n^2)
+
+     Time Complexity: Avarage Case
+      
+     Selection Sort: 
+      
+      2,3,5,8,7,9,4,15,6 ilk önce en küçük elemanı bul ve başa koy;      
+      2,3,5,8,7,9,4,15,6 daha sonra yan taraftaki değerler ile karşılaştır ve küçük olanı sıradaki indise yaz, büyük olanı diğerinin yerine yaz
+      2,3,4,8,7,9,5,15,6
+      2,3,4,5,7,9,8,15,6
+
+
+
+
+
+      
