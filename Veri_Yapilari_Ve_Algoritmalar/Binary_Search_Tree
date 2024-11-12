@@ -1,0 +1,14 @@
+[7, 5, 1, 8, 3, 6, 0, 9, 4, 2] dizisinin Binary-Search-Tree aşamalarını yazınız.
+
+Örnek: root x'dir. root'un sağından y bulunur. Solunda z bulunur vb.
+
+       root
+        7 
+       / \
+      5   8   -> 5 sayısı root tan küçük sol tarafa, 8 sayısı root tan büyük sağ tarafa yazılır.
+     / \   \
+    1   6   9  -> 1 ve 6 rootan küçük ve sol tarafa, 6 sayısı 5 den büyük sağa, 9 sayısı root ve 8 den büyük sağ tarafa yazılır
+   / \
+  0   3  -> sırasıyla aynı işlemler burada devam eder
+     / \
+    2   4 -> son düğüm
