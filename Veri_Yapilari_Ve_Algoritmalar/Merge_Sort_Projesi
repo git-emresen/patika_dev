@@ -1,0 +1,18 @@
+Proje 2
+
+ [16,21,11,8,12,22] -> Merge Sort
+
+ 1.Yukarıdaki dizinin sort türüne göre aşamalarını yazınız.
+
+
+  16,21,11 | 8,12,22        -> 1.aşama
+ 16,21 | 11 | 8,12 | 22     -> 2.aşama
+16 | 21 | 11 | 8 | 12 | 22  -> 3.aşama
+ 16 | 11,21 | 8 |12,22     ->4.aşama
+   11,16,21 | 8,12,22      ->5.aşama
+    8,11,12,16,21,22       ->6.aşama
+
+
+ 2.Big-O gösterimini yazınız.
+
+Merge Sort algoritmasının Big-O gösterimi, en iyi, en kötü ve ortalama durumda tüm senaryolar için aynı olup, her durumda O(n log n) karmaşıklığa sahiptir.
