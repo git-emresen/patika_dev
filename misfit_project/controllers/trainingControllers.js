@@ -27,14 +27,6 @@ exports.createTraining=async(req,res)=>{
     await newTraining.save(); 
     res.status(201).json({ status: "success", data: newTraining });
    
-
-     /*    const training=await trainingsModel.create(req.body);
-        res.status(201).json({
-            status:'success',
-            data:{
-                training
-            }
-        });   */
     } catch (error) {
         let errorMessage = "Bir hata oluştu.";
         if (error.name === 'ValidationError') {

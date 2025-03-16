@@ -9,7 +9,7 @@ router.route('/').get(pageControllers.getHomePage);
 router.route('/home').get(pageControllers.getHomePage);
 router.route('/index').get(pageControllers.getHomePage);
 router.route('/about').get(pageControllers.getAboutPage);
-router.route('/panel').get(auth,pageControllers.getUserPanelPage);
+router.route('/panel').get(pageControllers.getUserPanelPage);
 router.route('/contact').get(pageControllers.getContactPage);
 router.route('/gallery').get(pageControllers.getGalleryPage);
 router.route('/trainer').get(pageControllers.getTrainerPage);

@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('../lib/auth');
 
 const router = express.Router();
 
@@ -9,6 +10,8 @@ const {
     updateTraining,
     deleteTraining
 } = require('../controllers/trainingControllers');
+
+router.use(auth.authMiddleware);
 
 router.get('/', getAllTrainings);
 router.get('/:id', getTraining);

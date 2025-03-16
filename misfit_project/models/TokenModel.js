@@ -34,12 +34,10 @@ const tokenSchema = new mongoose.Schema({
         required: true
     },
     accessToken: {
-        type: String,
-        required: true,
+        type: String
     },
     refreshToken: {
-        type: String,
-        required: true,        
+        type: String       
     },
     accessTokenExpiresAt: {
         type: Date,

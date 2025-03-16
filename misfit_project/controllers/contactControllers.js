@@ -1,5 +1,5 @@
+const is=require('is_js');
 const messagesModel=require('../models/MessagesModel');
-const CustomError=require('../lib/Error');
 const mongoose = require('mongoose');
 
 exports.getMessages = async (req, res) => {
@@ -19,6 +19,14 @@ exports.getMessages = async (req, res) => {
 
 exports.createMessage = async (req, res) => {
     try {
+        const { user_name, email, message } = req.body;
+        if (!user_name || !email || is.not.email(email) || !message) {
+            return res.status(400).json({
+                status: 'fail',
+                message: 'Lütfen tüm alanları eksiksiz doldurunuz'
+            });
+        }   
+
         const newMessage = await messagesModel.create(req.body);
         res.status(201).json({
             status: 'success',
@@ -40,7 +48,7 @@ exports.deleteMessage = async (req, res) => {
 
         let deletedMessage=await messagesModel.findByIdAndDelete(req.params.id);
         if(deletedMessage){
-        res.status(204).json({
+        res.status(200).json({
             status: 'success',
             data: deletedMessage
         });
@@ -51,10 +59,9 @@ exports.deleteMessage = async (req, res) => {
         });
        }
     } catch (err) {
-        res.status(500).json({ status: "error", message: error.message });
+        res.status(500).json({ status: "error", message: err.message });
     }
 };
-
 
 exports.getMessage = async (req, res) => {
     try {

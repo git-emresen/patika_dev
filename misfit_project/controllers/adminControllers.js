@@ -1,4 +1,5 @@
 const User = require('../models/UsersModel');
+const UserRoles = require('../models/UserRolesModel');
 
 // Get all users
 exports.getAllUsers = async (req, res) => {
@@ -33,6 +34,8 @@ exports.createUser = async (req, res) => {
     const user = new User(req.body);
     try {
         const newUser = await user.save();
+        const userRole=new UserRoles({role_id:req.body.role_id,user_id:newUser._id});
+        await userRole.save();
         res.status(201).json(newUser);
     } catch (error) {
         res.status(400).json({ message: error.message });

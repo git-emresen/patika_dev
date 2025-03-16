@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const jwt = require('jsonwebtoken');
 const env = require('dotenv').config();
 const adminControllers = require('../controllers/adminControllers');
@@ -46,6 +47,7 @@ const logout =async (req, res) => {
         }
 
         const token = authHeader.split(" ")[1];
+        console.log("Gelen Token:", token);
 
         let deleteToken=async (token) => {
             try {
@@ -57,6 +59,7 @@ const logout =async (req, res) => {
         };
 
         const deletedToken=await deleteToken(token);
+        console.log("Deleted Token:", deletedToken);
 
         if(deletedToken){
             return res.status(200).json({ status: "success", message: "Çıkış başarılı" });
@@ -93,7 +96,7 @@ const refresh = (req, res) => {
 
         await Tokens.findOneAndUpdate({ refreshToken: token }, { accessToken: accessToken });
 
-        res.json({ accessToken });
+        return res.json({ accessToken });
     });
 }
 
