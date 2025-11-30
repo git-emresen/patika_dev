@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
+    <head>
       <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,21 +59,30 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
-                              <li class="nav-item active">
+                              <li class="nav-item ">
                                  <a class="nav-link" href="/index">Home</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="/about">About</a>
-                              </li>    
+                              </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="/trainer">Trainer</a>
                               </li>
-                              <li class="nav-item">
+                              <li class="nav-item ">
                                  <a class="nav-link" href="/gallery">Gallery</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="/contact">Contact Us</a>
                               </li>
+                              <% if(isAuthenticated) { %>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="/auth/logout">LOGOUT</a>
+                              </li>
+                               <% } else { %>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="/login">LOGIN</a>   
+                              </li>   
+                              <% } %>
                            </ul>
                         </div>
                      </nav>
@@ -357,11 +366,13 @@
                   <div class="col-md-3">
                      <h3>Link Menu</h3>
                      <ul class="link_menu">
-                        <li><a href="/index">Home</a></li>
-                        <li><a href="/about"> About</a></li>
-                        <li><a href="/trainer">Trainer</a></li>
-                        <li><a href="/gallery">Gallery</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="about.html"> About</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="trainer.html">Trainer</a></li>     
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                      </ul>
                   </div>
                   <div class=" col-md-5">
@@ -395,11 +406,11 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script src="../public/js/jquery.min.js"></script>
+       <script src="../public/js/jquery.min.js"></script>
       <script src="../public/js/bootstrap.bundle.min.js"></script>
       <script src="../public/js/jquery-3.0.0.min.js"></script>
       <!-- sidebar -->
-      <script src="../public/js/jquery.mCustomScrollbar.concat.min.js"></script>
+       <script src="../public/js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="../public/js/custom.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
       <script>

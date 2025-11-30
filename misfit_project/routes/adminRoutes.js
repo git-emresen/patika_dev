@@ -1,6 +1,8 @@
+
+const express = require('express')
 const adminControllers = require('../controllers/adminControllers');
 const auth=require("../lib/auth.js");
-const express = require('express');
+;
 const router = express.Router();
 
 router.use(auth.authMiddleware);   

@@ -1,4 +1,4 @@
-
+const authChecker = require('../lib/middleware/auth');
 
 const getHomePage = (req, res) => {
     res.render('index', { title: 'Home Page' });
@@ -13,6 +13,7 @@ const getContactPage = (req, res) => {
 };
 
 const getGalleryPage = (req, res) => {
+
     res.render('gallery', { title: 'Gallery Page' });
 };
 
@@ -23,10 +24,20 @@ const getTrainerPage = (req, res) => {
 const getUserPanelPage = (req, res) => {
     res.render('panel', { title: 'Panel Page' });
 };
+const getLoginPage = (req, res) => {
 
-const getErrorPage=(req,res)=>{
-    res.render('error',{title: 'Error Page'});
+    if(!req.session.user&&req.session.user==null){
+      res.render('login', { title: 'Login Page' });
+    } else {
+        res.redirect('/panel');
+    }
 }
+
+const getErrorPage = (req, res) => {
+    res.render('error', { title: 'Error Page'});
+}
+
+
 
 module.exports = {
     getHomePage,
@@ -35,5 +46,6 @@ module.exports = {
     getGalleryPage,
     getTrainerPage,
     getUserPanelPage,
+    getLoginPage,
     getErrorPage
 };

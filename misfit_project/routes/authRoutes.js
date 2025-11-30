@@ -5,10 +5,10 @@ const authControllers=require('../controllers/authControllers');
 
 
 router.route("/login").post(authControllers.login);
-router.route("/register").post(authControllers.register);
+router.route("/signup").post(authControllers.signup);
 router.route("/refresh").post(authControllers.refresh);
-router.use(auth.authMiddleware);
-router.route("/logout").post(authControllers.logout);
+/* router.use(auth.authMiddleware); */
+router.route("/logout").get(authControllers.logout);
 router.route("/me").get(authControllers.me);
 router.route("/forgot-password").post(authControllers.forgotPassword); 
 
