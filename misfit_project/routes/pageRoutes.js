@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { isAuthenticated, requireRole } = require('../lib/middleware/auth');
+const { isAuthenticated, checkRoles } = require('../lib/middleware/auth');
 const pageControllers= require('../controllers/pageControllers');
 
 /* const allowUser = [isAuthenticated, requireRole('user')]; */
@@ -11,7 +11,7 @@ router.route('/home').get(pageControllers.getHomePage);
 router.route('/about').get(pageControllers.getAboutPage);
 
 router.route('/panel')
- .all(isAuthenticated,requireRole('member'))
+ .all(isAuthenticated,checkRoles('admin','member'))
  .get(pageControllers.getUserPanelPage);
  
 router.route('/contact').get(pageControllers.getContactPage);

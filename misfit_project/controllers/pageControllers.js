@@ -1,4 +1,4 @@
-const authChecker = require('../lib/middleware/auth');
+
 
 const getHomePage = (req, res) => {
     res.render('index', { title: 'Home Page' });
@@ -21,8 +21,44 @@ const getTrainerPage = (req, res) => {
     res.render('trainer', { title: 'Trainer Page' });
 };
 
-const getUserPanelPage = (req, res) => {
-    res.render('panel', { title: 'Panel Page' });
+const getUserPanelPage = async (req, res) => {
+    try {
+        const Training = require('../models/TrainingsModel');
+        const UserWorkout = require('../models/UserworkoutsModel');
+        
+        const trainings = await Training.find();
+        const userId = req.session.user?.id;
+        
+        // Kullanıcının katıldığı eğitimleri bul
+        let userTrainings = [];
+        if (userId) {
+            userTrainings = await UserWorkout.find({ userId: userId })
+                .populate('workoutId')
+                .exec();
+        }
+        
+        const user = req.session.user;
+        const message = req.query.message || null;
+        const error = req.query.error || null;
+        
+        res.render('panel', { 
+            title: 'Panel Page', 
+            trainings, 
+            userTrainings,
+            user,
+            message,
+            error
+        });
+    } catch (error) {
+        res.render('panel', { 
+            title: 'Panel Page', 
+            trainings: [], 
+            userTrainings: [],
+            user: req.session.user, 
+            error: error.message,
+            message: null
+        });
+    }
 };
 const getLoginPage = (req, res) => {
 

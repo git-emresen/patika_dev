@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const UsersModel = require('../models/UsersModel');
 const UserRoles = require('../models/UserRolesModel')
 const Tokens = require('../models/TokenModel');
-const authController=require('../lib/auth');
+const authController=require('../lib/middleware/auth');
 
 const signup = async (req, res) => {
     /*  if (!is.email(req.body.email)) {
@@ -25,9 +25,14 @@ const signup = async (req, res) => {
     const user = new UsersModel(req.body);
     try {
         const newUser = await user.save();
-        const userRole = new UserRoles({ role_id: req.body.role_id, user_id: newUser._id });
-        await userRole.save();
-        res.session.userId = newUser._id;
+        /* const userRole = new UserRoles({ role_id: req.body.role_id, user_id: newUser._id }); 
+        await userRole.save();*/
+        req.session.user = {
+            id: newUser._id,
+            name: newUser.username,
+            email: newUser.email,
+            role: newUser.role
+        };
         res.redirect('/login');
     } catch (error) {
         res.status(400).json({ message: error.message });

@@ -1,5 +1,5 @@
 const express = require('express');
-const auth = require('../lib/auth');
+const authChecker = require('../lib/middleware/auth');
 
 const router = express.Router();
 
@@ -8,14 +8,20 @@ const {
     getTraining,
     createTraining,
     updateTraining,
-    deleteTraining
+    deleteTraining,
+    joinTraining,
+    leaveTraining,
+    getUserTrainings
 } = require('../controllers/trainingControllers');
 
-router.use(auth.authMiddleware);
+router.use(authChecker.isAuthenticated);
 
 router.get('/', getAllTrainings);
+router.get('/user/my-trainings', getUserTrainings);
 router.get('/:id', getTraining);
 router.post('/create', createTraining);
+router.post('/join', joinTraining);
+router.post('/leave', leaveTraining);
 router.put('/:id', updateTraining);
 router.delete('/:id', deleteTraining);
 
